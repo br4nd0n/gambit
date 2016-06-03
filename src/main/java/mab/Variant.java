@@ -4,10 +4,10 @@ package mab;
  * Created by brobrien on 3/31/16.
  */
 public enum Variant {
-    HOTEL1(.03),
-    HOTEL2(.04),
-    HOTEL3(.055),
-    HOTEL4(.04);
+    VARIANT1(.03),
+    VARIANT2(.04),
+    VARIANT3(.055),
+    VARIANT4(.04);
 
     private double conversionChance;
 

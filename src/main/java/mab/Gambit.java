@@ -31,21 +31,21 @@ public class Gambit {
 
         //bootstrap dataset
         for (int i = 0; i < 10; ++i) {
-            statsService.registerTrial(ctx, Variant.HOTEL1);
-            statsService.registerTrial(ctx, Variant.HOTEL2);
-            statsService.registerTrial(ctx, Variant.HOTEL3);
+            statsService.registerTrial(ctx, Variant.VARIANT1);
+            statsService.registerTrial(ctx, Variant.VARIANT2);
+            statsService.registerTrial(ctx, Variant.VARIANT3);
         }
         for (int i = 0; i < 1; ++i) {
-            statsService.registerWin(ctx, Variant.HOTEL1);
-            statsService.registerWin(ctx, Variant.HOTEL2);
-            statsService.registerWin(ctx, Variant.HOTEL3);
+            statsService.registerWin(ctx, Variant.VARIANT1);
+            statsService.registerWin(ctx, Variant.VARIANT2);
+            statsService.registerWin(ctx, Variant.VARIANT3);
         }
 
         Map<Variant, String> variantDisplayText = new HashMap() {{
-            put(Variant.HOTEL1, "HOTEL1                      ");
-            put(Variant.HOTEL2, "       HOTEL2               ");
-            put(Variant.HOTEL3, "              HOTEL3        ");
-            put(Variant.HOTEL4, "                     HOTEL4 ");
+            put(Variant.VARIANT1, "VARIANT1                         ");
+            put(Variant.VARIANT2, "        VARIANT2                 ");
+            put(Variant.VARIANT3, "                VARIANT3         ");
+            put(Variant.VARIANT4, "                        VARIANT4 ");
         }};
 
         int impressions = 0;
@@ -56,23 +56,23 @@ public class Gambit {
         int cutOverTrial = 1500;
 
         for (int i = 0; i < numTrials; ++i) {
-            /* test here indicates after convergence to hotel3, it will still switch back to hotel1 if hotel1 performances well enough */
+            /* test here indicates after convergence to variant3, it will still switch back to variant1 if variant1 performances well enough */
             if (updatedPerformanceTest && i == cutOverTrial) {
                 System.out.println("---------------------------------------------------------------------------");
-                System.out.println("-------------------- HOTEL1 SUDDENLY STARTS PERFORMING --------------------");
+                System.out.println("-------------------- VARIANT1 SUDDENLY STARTS PERFORMING --------------------");
                 System.out.println("---------------------------------------------------------------------------");
-                Variant.HOTEL1.setConversionChance(.09);
+                Variant.VARIANT1.setConversionChance(.09);
             }
 
-            /* test here to add a new machine after convergence. hotel3 is #1 performer, hotel4 is #2 performer. after exploring hotel4, Gambit re-converges on hotel3 */
+            /* test here to add a new machine after convergence. variant3 is #1 performer, variant4 is #2 performer. after exploring variant4, Gambit re-converges on variant3 */
             if (newVariantTest && i == cutOverTrial) {
                 System.out.println("---------------------------------------------------------------------------");
-                System.out.println("---------------------------  NEW VARIANT: HOTEL4  -------------------------");
+                System.out.println("---------------------------  NEW VARIANT: VARIANT4  -------------------------");
                 System.out.println("---------------------------------------------------------------------------");
 
                 for (int j=0;j<5;++j)
-                    statsService.registerTrial(ctx, Variant.HOTEL4);
-                statsService.registerWin(ctx, Variant.HOTEL4);
+                    statsService.registerTrial(ctx, Variant.VARIANT4);
+                statsService.registerWin(ctx, Variant.VARIANT4);
             }
 
             try {
@@ -111,7 +111,7 @@ public class Gambit {
         }
 
         double winRate = (new Double(conversions) / impressions);
-        //double tuition = Variant.HOTEL3.getWinChance() - winRate;
+        //double tuition = Variant.VARIANT3.getWinChance() - winRate;
         //System.out.println(String.format("Tuition cost:    %.4f", tuition));
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("");
