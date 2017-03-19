@@ -3,6 +3,7 @@ A real-time Multi-Armed Bandit implementation that uses [Thompson Sampling](http
 
 To run:
 mvn clean install
+
 mvn exec:java -Dexec.mainClass="mab.Gambit"
 
 The implementation of Gambit here is a proof-of-concept for doing basic real time reinforcement learning using mult-arm bandit, using Thompson Sampling as the explore/exploit policy.
