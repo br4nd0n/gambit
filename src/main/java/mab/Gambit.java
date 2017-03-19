@@ -59,7 +59,7 @@ public class Gambit {
             /* test here indicates after convergence to variant3, it will still switch back to variant1 if variant1 performances well enough */
             if (updatedPerformanceTest && i == cutOverTrial) {
                 System.out.println("---------------------------------------------------------------------------");
-                System.out.println("-------------------- VARIANT1 SUDDENLY STARTS PERFORMING --------------------");
+                System.out.println("-------------------- VARIANT1 SUDDENLY STARTS PERFORMING ------------------");
                 System.out.println("---------------------------------------------------------------------------");
                 Variant.VARIANT1.setConversionChance(.09);
             }
@@ -67,7 +67,7 @@ public class Gambit {
             /* test here to add a new machine after convergence. variant3 is #1 performer, variant4 is #2 performer. after exploring variant4, Gambit re-converges on variant3 */
             if (newVariantTest && i == cutOverTrial) {
                 System.out.println("---------------------------------------------------------------------------");
-                System.out.println("---------------------------  NEW VARIANT: VARIANT4  -------------------------");
+                System.out.println("---------------------------  NEW VARIANT: VARIANT4  -----------------------");
                 System.out.println("---------------------------------------------------------------------------");
 
                 for (int j=0;j<5;++j)
@@ -105,7 +105,7 @@ public class Gambit {
             }
 
             ++impressions;
-            System.out.println(variantDisplayText.get(variant) + (isWin ? " *converted" : " "));
+            System.out.println(variantDisplayText.get(variant) + (isWin ? " *reward" : " "));
             if (isUseText)
                 System.out.println(String.format("Variant %s %s", variant.toString(), isWin ? "won" : "lost"));
         }
